@@ -471,7 +471,7 @@ typedef enum
 // ---------------------
 static menuitem_t MPauseMenu[] =
 {
-	{IT_STRING | IT_CALL,     NULL, "Add-ons...", NULL,         M_Addons,               8},
+	{IT_STRING | IT_CALL,     NULL, "Add-Ons...", NULL,         M_Addons,               8},
 	{IT_STRING  | IT_SUBMENU, NULL, "Scramble Teams...", NULL,  &MISC_ScrambleTeamDef, 16},
 	{IT_STRING  | IT_CALL,    NULL, "Switch Map..."    , NULL,  M_MapChange,           24},
 
@@ -482,11 +482,11 @@ static menuitem_t MPauseMenu[] =
 	{IT_STRING | IT_CALL,    NULL, "Spectate",     NULL,         M_ConfirmSpectate,     48},
 	{IT_STRING | IT_CALL,    NULL, "Enter Game",     NULL,       M_ConfirmEnterGame,    48},
 	{IT_STRING | IT_SUBMENU, NULL, "Switch Team...",  NULL,      &MISC_ChangeTeamDef,   48},
-	{IT_CALL | IT_STRING,    NULL, "Player Setup",  NULL,        M_SetupMultiPlayer,    56}, // alone
-	{IT_CALL | IT_STRING,    NULL, "Options",       NULL,        M_Options,             64},
+	{IT_CALL | IT_STRING,    NULL, "User Setup",  NULL,        M_SetupMultiPlayer,    56}, // alone
+	{IT_CALL | IT_STRING,    NULL, "Settings",       NULL,        M_Options,             64},
 
 	{IT_CALL | IT_STRING,    NULL, "Return to Title",   NULL,    M_EndGame,            80},
-	{IT_CALL | IT_STRING,    NULL, "Quit Game",   NULL,          M_QuitSRB2,           88},
+	{IT_CALL | IT_STRING,    NULL, "Exit",   NULL,          M_QuitSRB2,           88},
 };
 
 typedef enum
@@ -519,8 +519,8 @@ static menuitem_t SPauseMenu[] =
 	{IT_CALL | IT_STRING,    NULL, "Level Select...",  NULL,     M_LoadGameLevelSelect, 32},
 
 	{IT_CALL | IT_STRING,    NULL, "Continue",        NULL,      M_SelectableClearMenus,48},
-	{IT_CALL | IT_STRING,    NULL, "Retry",           NULL,      M_Retry,               56},
-	{IT_CALL | IT_STRING,    NULL, "Options",         NULL,      M_Options,             64},
+	{IT_CALL | IT_STRING,    NULL, "Restart",           NULL,      M_Retry,               56},
+	{IT_CALL | IT_STRING,    NULL, "Settings",         NULL,      M_Options,             64},
 
 	{IT_CALL | IT_STRING,    NULL, "Return to Title",   NULL,    M_EndGame,             80},
 	{IT_CALL | IT_STRING,    NULL, "Quit Game",        NULL,     M_QuitSRB2,            88},
@@ -589,7 +589,7 @@ static menuitem_t SR_PandorasBox[] =
 	{IT_STRING | IT_CALL, NULL, "Get All Emeralds", NULL,   M_GetAllEmeralds,    90},
 	{IT_STRING | IT_CALL, NULL, "Destroy All Robots", NULL,  M_DestroyRobots,    100},
 
-	{IT_STRING | IT_CALL, NULL, "Ultimate Cheat",  NULL,    M_UltimateCheat,    130},
+	{IT_STRING | IT_CALL, NULL, "Ultimate Spacetime Supremity",  NULL,    M_UltimateCheat,    130},
 };
 
 // Sky Room Custom Unlocks
@@ -5319,7 +5319,7 @@ static void M_DrawLoadGameData(void)
 		if (ultimate_selectable)
 		{
 			V_DrawCenteredString(ecks + 68, 144, V_ORANGEMAP, "ULTIMATE MODE");
-			V_DrawCenteredString(ecks + 68, 156, 0, "NO RINGS, NO ONE-UPS,");
+			V_DrawCenteredString(ecks + 68, 156, 0, "NO RINGS NOR ONE-UPS,");
 			V_DrawCenteredString(ecks + 68, 164, 0, "NO CONTINUES, ONE LIFE,");
 			V_DrawCenteredString(ecks + 68, 172, 0, "FINAL DESTINATION.");
 		}
@@ -5341,9 +5341,9 @@ static void M_DrawLoadGameData(void)
 
 	if (savegameinfo[saveSlotSelected].lives == -666) // savegame is bad
 	{
-		V_DrawCenteredString(ecks + 68, 144, V_REDMAP, "CORRUPT SAVE FILE");
+		V_DrawCenteredString(ecks + 68, 144, V_REDMAP, "CORRUPT SAVE FOUND!");
 		V_DrawCenteredString(ecks + 68, 156, 0, "THIS SAVE FILE");
-		V_DrawCenteredString(ecks + 68, 164, 0, "CAN NOT BE LOADED.");
+		V_DrawCenteredString(ecks + 68, 164, 0, "CANNOT BE LOADED.");
 		V_DrawCenteredString(ecks + 68, 172, 0, "DELETE USING BACKSPACE.");
 		return;
 	}
@@ -5691,7 +5691,7 @@ static void M_HandleLoadSave(INT32 choice)
 			// Don't allow people to 'delete' "Play without Saving."
 			// Nor allow people to 'delete' slots with no saves in them.
 			if (saveSlotSelected != NOSAVESLOT && savegameinfo[saveSlotSelected].lives != -42)
-				M_StartMessage(M_GetText("Are you sure you want to delete\nthis save game?\n\n(Press 'Y' to confirm)\n"),M_SaveGameDeleteResponse,MM_YESNO);
+				M_StartMessage(M_GetText("Are you sure you want to delete\nthis save file?\n\n(Press 'Y' to confirm)\n"),M_SaveGameDeleteResponse,MM_YESNO);
 			break;
 	}
 	if (exitmenu)
