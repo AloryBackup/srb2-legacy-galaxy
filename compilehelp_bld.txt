@@ -1,0 +1,31 @@
+PROBABLY BEST WORKED WITH SRB2BLD AS THAT'S WHAT I'VE DONE TO COMPILE THIS, MY STEPS ARE BELOW
+MIGHT BE A BETTER WAY
+
+_________________
+
+SRB2BLDDEVMODE=1 srb2bld --install
+_________________
+
+if placed in:
+
+[usr]/AppData/Roaming/srb2bld/builds/srb2-custom/ [srb2-galaxy, this repo]
+
+then option 45 (srb2 custom)
+
+___ rest to be determined _____
+
+
+button prompts:
+- 45
+- 1
+- [enter/return, win/unix] or "No" (if detected files)
+
+- 1 [latest commit?]
+- then file of a zip containing 2.1's dta files and srb2.srb (unless these get overridden by me one day))
+- [enter/return] - default compile flags
+
+
+
+	- probably is like "make CC=/usr/lib/ccache/x86_64-w64-mingw32-gcc CXX=/usr/lib/ccache/x86_64-w64-mingw32-g++ C_INCLUDE_PATH=/usr/x86_64-w64-mingw32/include/.:/usr/x86_64-linux-gnu/include/.:/usr/local/include/SDL2/.:/usr/local/include/openvr/. -k -j16 -C /C/Users/Alory/AppData/Roaming/srb2bld/builds/srb2-2.1-legacy/src MINGW64=1 SDL=1 NOOBJDUMP=1 NOVERSION=1 NOUPX=1 [YOUR-COMPILATION-FLAGS-WILL-BE-HERE]"
+
+Should work!

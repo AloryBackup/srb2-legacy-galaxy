@@ -147,10 +147,10 @@ typedef LPVOID (WINAPI *p_MapViewOfFile) (HANDLE, DWORD, DWORD, DWORD, SIZE_T);
 
 // Locations for searching the srb2.srb
 #if defined (__unix__) || defined(__APPLE__) || defined (UNIXCOMMON)
-#define DEFAULTWADLOCATION1 "/usr/local/share/games/SRB2legacy"
-#define DEFAULTWADLOCATION2 "/usr/local/games/SRB2legacy"
-#define DEFAULTWADLOCATION3 "/usr/share/games/SRB2legacy"
-#define DEFAULTWADLOCATION4 "/usr/games/SRB2legacy"
+#define DEFAULTWADLOCATION1 "/usr/local/share/games/Csrb2-galaxy"
+#define DEFAULTWADLOCATION2 "/usr/local/games/Csrb2-galaxy"
+#define DEFAULTWADLOCATION3 "/usr/games/Csrb2-galaxy"
+#define DEFAULTWADLOCATION4 "/usr/games/Csrb2-galaxy"
 #define DEFAULTSEARCHPATH1 "/usr/local/games"
 #define DEFAULTSEARCHPATH2 "/usr/games"
 #define DEFAULTSEARCHPATH3 "/usr/local"
@@ -334,11 +334,6 @@ static void write_backtrace(INT32 signal)
 
 int I_OpenURL(const char *url)
 {
-#if SDL_VERSION_ATLEAST(2,0,14)
-	return SDL_OpenURL(va("%s", url));
-#else	
-	return -1;
-#endif
 }  
 
 static void I_ReportSignal(int num, int coredumped)
@@ -424,8 +419,6 @@ static void I_ReportSignal(int num, int coredumped)
 
 	SDL_ShowMessageBox(&messageboxdata, &buttonid);
 
-	if (buttonid == 1)
-		I_OpenURL("https://github.com/P-AS/srb2-legacy/issues");
 }
 
 #ifndef NEWSIGNALHANDLER
@@ -2470,15 +2463,6 @@ INT32 I_StartupSystem(void)
 	 SDLcompiled.major, SDLcompiled.minor, SDLcompiled.patch);
 	I_OutputMsg("Linked with SDL version: %d.%d.%d\n",
 	 SDLlinked.major, SDLlinked.minor, SDLlinked.patch);
-#if SDL_VERSION_ATLEAST(2,0,18)
-	SDL_SetHint(SDL_HINT_APP_NAME, "SRB2 Legacy");
-#endif
-	if (SDL_Init(0) < 0)
-		I_Error("SRB2: SDL System Error: %s", SDL_GetError()); //Alam: Oh no....
-#ifndef NOMUMBLE
-	I_SetupMumble();
-#endif
-	return 0;
 }
 
 //

@@ -310,9 +310,9 @@ enum {
 
 // Name of local directory for config files and savegames
 #if (defined (__unix__) || defined (UNIXCOMMON)) && !defined (__CYGWIN__) && !defined (__APPLE__)
-#define DEFAULTDIR ".srb2_21"
+#define DEFAULTDIR ".srb2_21csrb2-galaxycsrb2-galaxy"
 #else
-#define DEFAULTDIR "srb2_21"
+#define DEFAULTDIR "srb2_21csrb2-galaxycsrb2-galaxy"
 #endif
 
 #include "g_state.h"

@@ -223,7 +223,7 @@ static void F_SkyScroll(INT32 scrollspeed)
 
 	pat = W_CachePatchName("TITLESKY", PU_PATCH);
 
-	animtimer = ((finalecount*scrollspeed)/16) % SHORT(pat->width) + (FixedInt((R_GetHudUncap(true)) * scrollspeed)/16);
+	animtimer = (((finalecount*scrollspeed)/16) % SHORT(pat->width) + (FixedInt((R_GetHudUncap(true)) * scrollspeed)/16) * 0.75);
 
  if (rendermode != render_none)
 	{ // if only software rendering could be this simple and retarded
@@ -289,7 +289,7 @@ void F_StartIntro(void)
 	}
 
 	introtext[0] = " #";
-
+// One day I'll be able to replace this.'
 	introtext[1] = M_GetText(
 	"Two months had passed since Dr. Eggman\n"
 	"tried to take over the world using his\n"
@@ -960,6 +960,9 @@ static const char *credits[] = {
 	"\1Sonic Robo Blast II",
 	"\1Credits",
 	"",
+	"\1 SRBII Galaxy Idea",
+	"Thought by \"ElastedAlorian\"",
+	"Inspired by Nintendo",
 	"\1Game Design",
 	"Ben \"Mystic\" Geyer",
 	"\"SSNTails\"",
